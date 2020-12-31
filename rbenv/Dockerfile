@@ -1,19 +1,22 @@
 FROM debian:stable-slim
 
-SHELL ["/bin/bash", "-lc"]
+SHELL ["bash", "-lc"]
 
-RUN apt update
-RUN apt install -y bash-completion
-RUN apt install -y build-essential
-RUN apt install -y curl
-RUN apt install -y git
-RUN apt install -y libssl-dev
-RUN apt install -y zlib1g-dev
+RUN apt update && apt install -y \
+  bash-completion \
+  bzip2 \
+  curl \
+  gcc \
+  git \
+  libssl-dev \
+  make \
+  zlib1g-dev \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-RUN cd ~/.rbenv && src/configure && make -C src
-RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-RUN echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
+  cd ~/.rbenv && src/configure && make -C src && \
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile && \
+  echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 
-CMD /bin/bash -l
+CMD bash
