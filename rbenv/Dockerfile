@@ -6,6 +6,7 @@ RUN apt update && apt install -y \
   bash-completion \
   bzip2 \
   curl \
+  g++ \
   gcc \
   git \
   libssl-dev \
