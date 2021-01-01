@@ -1,4 +1,4 @@
-FROM nanticj/bundler
+FROM nanticj/bundler:2.7.2
 
 EXPOSE 4000
 WORKDIR /home
