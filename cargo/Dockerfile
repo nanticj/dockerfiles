@@ -13,4 +13,5 @@ RUN curl -sSL https://sh.rustup.rs -o rustup.sh && \
   sh rustup.sh -y && \
   rm -rf rustup.sh
 
+ENV USER=root
 CMD bash
