@@ -1,7 +1,7 @@
-FROM nanticj/pyenv
+FROM nanticj/pyenv:1.2.27
 
-RUN pyenv install 3.9.1 && \
-  pyenv global 3.9.1 && \
+RUN pyenv install 3.9.4 && \
+  pyenv global 3.9.4 && \
   python -m pip install --upgrade pip && \
   pip install --upgrade setuptools && \
   pip install wheel && \
