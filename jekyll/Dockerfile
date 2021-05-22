@@ -1,4 +1,4 @@
-FROM nanticj/bundler:2.7.2
+FROM nanticj/bundler:rb2.7.2
 
 WORKDIR /home
 
