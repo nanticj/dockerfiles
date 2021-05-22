@@ -1,12 +1,4 @@
-FROM debian:stable-slim
-
-SHELL ["bash", "-lc"]
-
-RUN apt update && apt install -y \
-  bash-completion \
-  curl \
-  git \
-  && rm -rf /var/lib/apt/lists/*
+FROM nanticj/debian:stable-20210511-slim
 
 RUN curl -LO https://golang.org/dl/go1.15.6.linux-amd64.tar.gz && \
   tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz && \
