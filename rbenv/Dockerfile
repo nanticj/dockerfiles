@@ -1,20 +1,8 @@
-FROM debian:stable-slim
-
-SHELL ["bash", "-lc"]
-
-RUN apt update && apt install -y \
-  bash-completion \
-  bzip2 \
-  curl \
-  g++ \
-  gcc \
-  git \
-  libssl-dev \
-  make \
-  zlib1g-dev \
-  && rm -rf /var/lib/apt/lists/*
+FROM nanticj/debian:stable-20210511-slim
 
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
+  cd ~/.rbenv && \
+  git checkout tags/v1.1.2 && \
   git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
   cd ~/.rbenv && src/configure && make -C src && \
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile && \
